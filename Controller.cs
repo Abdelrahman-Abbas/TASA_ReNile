@@ -41,6 +41,26 @@ namespace Company
             string query = "CREATE VIEW DoctorView AS SELECT PH, DO,FarmState,AUTOMATED FROM FishFarm where ID='"+ ID +"';";
             return dbMan.ExecuteTableQuery(query);
         }
+        //update:
+        public int UpdateFarm(string ID , string FSize, string FCity, string FState, string FAuto, string FPH, string FDO)
+        {
+            string query = "UPDATE FishFarm SET SIZE='" + FSize + " ', CITY = '"+ FCity +"', FarmState = "+ FState +  "', AUTOMATED= ' "+FAuto+"', PH =" +FPH+ "', DO= '"+DO+
+            "' WHERE ID ='" + FID + "';";
+            return dbMan.UpdateData(query);
+        }
+        //Update:
+        public int InsertDoctor(string DID, string DFName, string DLName , string DAddress, string DPhone)
+        {
+            string query = "INSERT INTO FishFarm " +
+                            "Values ('" + DID + "'," + DFName + ",'" + DLName + "','" + DAddress + "','" + DPhone + ");";
+
+            return dbMan.UpdateData(query);
+        }
+        public int DeleteFarm(string FID)
+        {
+            string query = "DELETE FROM FishFarm WHERE ID ='" + FID + "' ON DELETE SET NULL;";
+            return dbMan.UpdateData(query);
+        }
         public void TerminateConnection()
         {
             dbMan.CloseConnection();
