@@ -61,6 +61,15 @@ namespace Company
             string query = "DELETE FROM FishFarm WHERE ID ='" + FID + "' ON DELETE SET NULL;";
             return dbMan.UpdateData(query);
         }
+//
+        public int InsertImporter(string IFAccount, string IName, string Manu, string PType)
+        {
+            string query = "INSERT INTO Importers " +
+                            "Values ('" + IFAccount + "'," + IName + ",'" + Manu + "','" + PType +"');";
+
+            return dbMan.UpdateData(query);
+        }
+//
         public void TerminateConnection()
         {
             dbMan.CloseConnection();
